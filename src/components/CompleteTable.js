@@ -1,8 +1,7 @@
-import {React,useEffect} from "react";
+import {React} from "react";
 import {useSelector,useDispatch} from "react-redux";
 import { sortdata, } from '../redux/productReducer.js';
 import Table from "./Table"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,9 +15,9 @@ function TableContainer(){
       }
 
     const rows = productData["productData"].sales ? (
-        productData["productData"].sales.map(row => {
+        productData["productData"].sales.map((row,index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>{row.weekEnding.toLocaleString()}</td>
               <td>{"$" + row.retailSales.toLocaleString()}</td>
               <td>{"$" + row.wholesaleSales.toLocaleString()}</td>
@@ -29,7 +28,7 @@ function TableContainer(){
         })
       ) : (
         <tr>
-          <td rowspan="5">No data to display</td>
+          <td rowSpan="5">No data to display</td>
         </tr>
       );
 

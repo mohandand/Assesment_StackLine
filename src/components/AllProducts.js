@@ -13,8 +13,8 @@ function ProductContainer(){
 
         },[])
     const tags = productData["productData"].tags ? 
-    (productData["productData"].tags.map( tag => {
-            return <span className="tags">{tag}</span>;
+    (productData["productData"].tags.map( (tag,index)=> {
+            return <span key={index} className="tags">{tag}</span>;
           })
     ) : (
         <span />
